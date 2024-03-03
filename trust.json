@@ -1,21 +1,20 @@
 {
     "Version": "2012-10-17",
     "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "Federated": "arn:aws:iam::357171621133:oidc-provider/token.actions.githubusercontent.com"
-        },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-          "StringEquals": {
-            "token.actions.githubusercontent.com:sub": [
-              "repo:cloudsihmar/aws-oidc:pull_request",
-              "repo:cloudsihmar/aws-oidc:ref:refs/heads/main"
-            ],
-            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-          }
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::685421549691:oidc-provider/token.actions.githubusercontent.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringLike": {
+                    "token.actions.githubusercontent.com:sub": "repo:CloudSihmar/aws-oidc:*"
+                },
+                "StringEquals": {
+                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+                }
+            }
         }
-      }
     ]
-  }
+}
